@@ -1,0 +1,7 @@
+newsapi-python
+openai
+awscli
+sqlalchemy
+sqlalchemy-utils
+apache-airflow-providers-common-sql
+apache-airflow-providers-postgres
