@@ -108,7 +108,7 @@ def get_sentiment(**kwargs):
 
 
 with DAG(
-    "freightwaves_demo",
+    "demo",
     schedule_interval=None,
     default_args=default_args,
     catchup=False,
