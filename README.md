@@ -51,3 +51,24 @@
     * the `get_articles` and `get_keywords` tasks run in parallel as they are independent of each other
 
 ![dag](dag.png)
+
+## Results
+And we see that for a given article headline we can get the headline sentiment (0 to 100) and the headline keywords with the below query.
+
+```sql
+select a.id, a.title , a."source" , v.sentiment, array_agg(k.keyword) as keywords
+from sentiment.articles a 
+	 inner join
+	 sentiment.keyword k on a.id=k.article_id 
+	 inner join 
+	 sentiment.sentiment_values v on a.id=v.article_id
+where a.id=1
+group by a.id, a.title , a."source" , v.sentiment
+```
+
+Resulting in data that looks like the below where we see this headline has a positive sentiment.
+| id      | title | source | sentiment | keywords |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| 2      | Field of presidential candidates for 2024 is already uniquely diverse      | usa-today      | 98       | {presidential,candidates,2024,diverse}       |
+
+We can use this data to chart trends, get insights on news sources and their sentiments around keywords and other items.
