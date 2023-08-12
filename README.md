@@ -62,7 +62,7 @@ from sentiment.articles a
 	 sentiment.keyword k on a.id=k.article_id 
 	 inner join 
 	 sentiment.sentiment_values v on a.id=v.article_id
-where a.id=1
+where a.id=2
 group by a.id, a.title , a."source" , v.sentiment
 ```
 
