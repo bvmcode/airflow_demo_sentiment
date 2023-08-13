@@ -42,6 +42,8 @@
     * `keyword` which contains the keywords for each article (1 to many relationship with `articles`)
     * `sentiment_values` which contains the sentiment values (0 to 100) for each article (1 to 1 relationship with `articles`)
 
+![dag](er_diag.png)
+
 ## Airflow Dag
 * `./dags/sentiment_demo.py`
     * `get_articles` task gets the articles and persists into `sentiment.articles`
