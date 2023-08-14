@@ -7,16 +7,11 @@
 * AWS Postgres infrastructure via terraform
     * create a `./infrastructure/secrets.tfvars` to set a postgres password (see `./infrastructure/secrets.tfvars.template`)
     * the terraform script assumes default aws profile on system
-    * Remove all files or folders from `./infrastructure` if running from scrach except
-        * `main.tf`
-        * `Makefile`
-        * `outputs.tf`
-        * `secrets.tfvars`
-        * `variables.tf`
+    * remove `./infrastructure/.terraform.lock.hci`
     * run `terraform init`
     * use make commands to run setup
         * `make plan`
-        * `make deploy`
+        * `make deploy` - host name printed to screen
     * to tear down infrastructure
         * `make destroy`
 * Create db
