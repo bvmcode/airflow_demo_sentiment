@@ -63,7 +63,7 @@ def get_open_ai_answer(headline, prompt_type="keyword"):
     elif prompt_type == "sentiment":
         prompt = get_sentiment_prompt(headline)
     else:
-        raise ValueError(f"prompt_type `{prompt_type}` is invalid")
+        raise ValueError(f"prompt_type '{prompt_type}' is invalid")
     openai_key = Variable.get("openai_key")
     openai.api_key = openai_key
     resp = openai.Completion.create(
