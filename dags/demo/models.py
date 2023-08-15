@@ -2,10 +2,10 @@ from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.sql import func
 
-BaseModel = declarative_base()
+Base = declarative_base()
 
 
-class SentimentArticles(BaseModel):
+class SentimentArticles(Base):
 
     """News API articles."""
 
@@ -28,7 +28,7 @@ class SentimentArticles(BaseModel):
         return f"""<SentimentArticles({self.id})>"""
 
 
-class SentimentKeywords(BaseModel):
+class SentimentKeywords(Base):
 
     """OpenAI API article keywords."""
 
@@ -50,7 +50,7 @@ class SentimentKeywords(BaseModel):
         return f"""<SentimentKeywords({self.id})>"""
 
 
-class SentimentValues(BaseModel):
+class SentimentValues(Base):
 
     """OpenAI API article sentiment values."""
 
