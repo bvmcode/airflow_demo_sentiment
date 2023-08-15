@@ -46,23 +46,10 @@ def get_keywords(**kwargs):
     """Based on news headlines get openai keywords for articles and persist to db."""
     ti = kwargs["ti"]
     article_id_range = ti.xcom_pull(task_ids="get_articles")
-    prompt = """Based on the news headline,
-                 provide the most important word bubble
-                 terms associated with who or what the article is about.
-                 If the term is a name, provider only the last name.
-                 Provide a json list.
-
-                 Desired Format: json list
-
-                 Headline: {headline}
-
-                 Answer:
-               """
     session = db_conn()
     for _id in range(article_id_range[0], article_id_range[1] + 1):
         title = get_article_title_from_id(_id)
-        prompt_updated = prompt.format(headline=title)
-        openai_resp = get_open_ai_answer(prompt_updated)
+        openai_resp = get_open_ai_answer(title)
         try:
             data = json.loads(openai_resp)
         except json.decoder.JSONDecodeError:
@@ -80,21 +67,10 @@ def get_sentiment(**kwargs):
     """Based on news headlines get openai sentiment values for articles and persist to db."""
     ti = kwargs["ti"]
     article_id_range = ti.xcom_pull(task_ids="get_articles")
-    prompt = """
-            Based on the news article headline provide a sentiment
-            between 0 and 100 where 0 is the most negative and 100 is
-            the most positive.
-            Desired Format: an integer
-
-            Headline: {headline}
-
-            Sentiment:
-    """
     session = db_conn()
     for _id in range(article_id_range[0], article_id_range[1] + 1):
         title = get_article_title_from_id(_id)
-        prompt_updated = prompt.format(headline=title)
-        openai_resp = get_open_ai_answer(prompt_updated)
+        openai_resp = get_open_ai_answer(title, "sentiment")
         try:
             value = int(openai_resp)
         except ValueError:
