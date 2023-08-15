@@ -2,23 +2,7 @@ from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.sql import func
 
-Base = declarative_base()
-
-
-class CRUDMixin(object):
-    """Mixin that adds convenience methods for CRUD (create, read, update,
-    delete) operations."""
-
-    def update(self, **kwargs):
-        """Update specific fields of a record."""
-        for attr, value in kwargs.items():
-            setattr(self, attr, value)
-
-
-class BaseModel(CRUDMixin, Base):
-    """Base model class that includes CRUD convenience methods."""
-
-    __abstract__ = True
+BaseModel = declarative_base()
 
 
 class SentimentArticles(BaseModel):
