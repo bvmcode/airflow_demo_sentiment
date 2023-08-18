@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 
 def db_conn():
     """Get DB connection."""
-    conn = BaseHook.get_connection("freightwaves_rds")
+    conn = BaseHook.get_connection("sentiment_rds")
     conn_url = f"postgresql+psycopg2://{conn.login}:{conn.password}@{conn.host}:{conn.port}/{conn.schema}"
     engine = create_engine(conn_url)
     Session = sessionmaker(bind=engine)

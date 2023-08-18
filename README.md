@@ -25,10 +25,10 @@
     * create `openai_key` variable to store your [openai](https://openai.com) API key
     * create `news_sources` variable to store a json list of news sources (see [newsapi](https://newsapi.org) for a list of news sources)
 * Airflow Connections
-    * create a postgres connection called `freightwaves_rds`
+    * create a postgres connection called `sentiment_rds`
     * host - would be the host created from running terraform, see AWS RDS via the AWS console
     * schema - `postgres`
-    * username - `freightwaves`
+    * username - `sentiment`
     * password - The password in the `./infrastructure/secrets.tfvars` file
 
 ## Database
